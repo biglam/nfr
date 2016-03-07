@@ -1,3 +1,8 @@
 <p>Ordered by Points, IMDB ranking then Rotton Tomatoes</p>
 
-<%= render partial: 'top3list' %>
+<%= render partial: 'top3list', locals: {movies: @top_sixties}%>
+<%= render partial: 'top3list', locals: {movies: @top_seventies}%>
+<%= render partial: 'top3list', locals: {movies: @top_eighties}%>
+<%= render partial: 'top3list', locals: {movies: @top_nineties}%>
+<%= render partial: 'top3list', locals: {movies: @top_naughties}%>
+<%= render partial: 'top3list', locals: {movies: @top_tens}%>
