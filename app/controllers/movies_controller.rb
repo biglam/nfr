@@ -63,12 +63,12 @@ class MoviesController < ApplicationController
 
   def top3
     @movies = Movie.all
-    @top_sixties = @movies.where("year BETWEEN 1960 AND 1969")
-    @top_seventies = @movies.where("year BETWEEN 1970 AND 1979")
-    @top_eighties = @movies.where("year BETWEEN 1980 AND 1989")
-    @top_nineties = @movies.where("year BETWEEN 1990 AND 1999")
-    @top_naughties = @movies.where("year BETWEEN 2000 AND 2010")
-    @top_tens = @movies.where("year BETWEEN 2010 AND 2020")
+    @top_sixties = @movies.where("year BETWEEN 1960 AND 1969").limit(3)
+    @top_seventies = @movies.where("year BETWEEN 1970 AND 1979").limit(3)
+    @top_eighties = @movies.where("year BETWEEN 1980 AND 1989").limit(3)
+    @top_nineties = @movies.where("year BETWEEN 1990 AND 1999").limit(3)
+    @top_naughties = @movies.where("year BETWEEN 2000 AND 2010").limit(3)
+    @top_tens = @movies.where("year BETWEEN 2010 AND 2020").limit(3)
     # binding.pry;''
   end
 
