@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307152702) do
+ActiveRecord::Schema.define(version: 20160307152928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 20160307152702) do
     t.string   "title"
     t.text     "image"
     t.integer  "year"
-    t.float    "imdbranking"
-    t.float    "tomatorating"
-    t.string   "takings"
-    t.integer  "flixratingspoints"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.float    "imdbranking",       default: 0.0
+    t.float    "tomatorating",      default: 0.0
+    t.string   "takings",           default: "Not Available"
+    t.integer  "flixratingspoints", default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "votes", force: :cascade do |t|
