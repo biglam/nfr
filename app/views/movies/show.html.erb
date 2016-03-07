@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @movie.image %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @movie.year %>
+</p>
+
+<p>
+  <strong>Imdbranking:</strong>
+  <%= @movie.imdbranking %>
+</p>
+
+<p>
+  <strong>Tomatorating:</strong>
+  <%= @movie.tomatorating %>
+</p>
+
+<p>
+  <strong>Takings:</strong>
+  <%= @movie.takings %>
+</p>
+
+<p>
+  <strong>Flixratingspoints:</strong>
+  <%= @movie.flixratingspoints %>
+</p>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>

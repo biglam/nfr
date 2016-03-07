@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  image: MyText
+  year: 1
+  imdbranking: 1.5
+  tomatorating: 1.5
+  takings: MyString
+  flixratingspoints: 1
+
+two:
+  title: MyString
+  image: MyText
+  year: 1
+  imdbranking: 1.5
+  tomatorating: 1.5
+  takings: MyString
+  flixratingspoints: 1
