@@ -7,40 +7,48 @@ add to database if not
 check movie is in correct date range
 generate vote with correct details
 
- -->
+-->
 
- <script> 
-   function search(query, movienum) {
-   $.ajax({
-    type: "GET",
-    url: '/movies.json',
-    data: { 
-      q: query
-    },
-    dataType: 'json',
-    success: function(msg) {
-   		console.log(msg);
-   		console.log(movienum);
-   		$('#movie' + movienum).val(msg[0]['title']);
-   		$('#movie' + movienum + 'year').text(msg[0]['year']);
-   		$('#movie' + movienum + 'id').text(msg[0]['id']);
-    }
-  });
-}
+<script> 
+	function search(query, movienum) {
+		$.ajax({
+			type: "GET",
+			url: '/movies.json',
+			data: { 
+				q: query
+			},
+			dataType: 'json',
+			success: function(msg) {
+				console.log(msg);
+				console.log(movienum);
+				$('#movie' + movienum).val(msg[0]['title']);
+				$('#movie' + movienum + 'year').text(msg[0]['year']);
+				$('#movie' + movienum + 'id').text(msg[0]['id']);
+				$('#movie_id_' + movienum).val(msg[0]['id']);
+			}
+		});
+	}
 
-$(function() {
+	$(function() {
 
-});
- </script>
-<% choices = ['1st','2nd','3rd'] %>
-<% 18.times do |i| %>
-<%= 1960 + (10*(i/3)) %>'s
-<%= choices[0] %><%= text_field_tag(:title, "", :id => "movie#{i}") %> <p>Year: <span id="movie<%= i %>year"></span> ID: <span id="movie<%= i %>id"></span></p>
-<script>
-		$('#movie<%= i %>').blur(function(e) {
-		// console.log($('#movie1').val());
-		search($('#movie<%= i %>').val(), <%= i %>);
-	})
+	});
 </script>
-<% choices.rotate! %>
- <% end %>
+<% choices = ['1st','2nd','3rd'] %>
+<%= form_tag "/votes/multicast", :method => :post, id: "votescast" do %>
+<!-- <form action="/votes/multicast" method="post" id="votescast"> -->
+	<% 18.times do |i| %>
+		<%= 1960 + (10*(i/3)) %>'s
+		<%= choices[0] %><%= text_field_tag(:title, "", :id => "movie#{i}") %> <p>Year: <span id="movie<%= i %>year"></span> ID: <span id="movie<%= i %>id"></span></p>
+		<%= hidden_field("movie_id", "#{i}", :value => 1) %>
+		<script>
+			$('#movie<%= i %>').blur(function(e) {
+			// console.log($('#movie1').val());
+			search($('#movie<%= i %>').val(), <%= i %>);
+			})
+		</script>
+		<% choices.rotate! %>
+		<% end %>
+	<%= submit_tag %>
+	<!-- <input type="submit"> -->
+	<!-- </form> -->
+<% end %>

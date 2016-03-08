@@ -7,6 +7,11 @@ Rails.application.routes.draw do
       # get 'search/:action'
     end
   end
+  resources :votes do
+    collection do
+      post 'multicast'
+    end
+  end
   root 'movies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
