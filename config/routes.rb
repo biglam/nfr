@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get 'top3'
       get 'entervotes'
+      # get 'search/:action'
     end
   end
   root 'movies#index'
