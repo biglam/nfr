@@ -1,6 +1,6 @@
 <h2><%= current_user.email %>'s picks</h2>
 <h2>60's</h2>
-
+<%= text_field_tag(:title, "a", :id => "movie1") %> <p>Year: <span id="movie1year"></span></p>
 
 <!-- 
 
@@ -23,7 +23,16 @@ generate vote with correct details
     dataType: 'json',
     success: function(msg) {
    		console.log(msg)
+   		$('#movie1').val(msg[0]['title']);
+   		$('#movie1year').text(msg[0]['year'])
     }
   });
 }
+
+$(function() {
+	$('#movie1').blur(function(e) {
+		// console.log($('#movie1').val());
+		search($('#movie1').val());
+	})
+});
  </script>
