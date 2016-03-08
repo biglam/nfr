@@ -8,6 +8,13 @@ class MoviesController < ApplicationController
     if params[:q]
       # binding.pry;''
       @movies = Movie.where("lower(title) like ?", "%#{params[:q]}%")
+      if @movies.count == 0 
+        # binding.pry;''
+        newmovie = Movie.create(title: params[:q])
+        newmovie.get_data_from_omdb
+        newmovie.save
+        @movies = Movie.where("lower(title) like ?", "%#{params[:q]}%")
+      end
     else
       @movies = Movie.all
     end
