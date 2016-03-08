@@ -11,3 +11,19 @@ check movie is in correct date range
 generate vote with correct details
 
  -->
+
+ <script> 
+   function search(query) {
+   $.ajax({
+    type: "GET",
+    url: '/movies.json',
+    data: { 
+      q: query
+    },
+    dataType: 'json',
+    success: function(msg) {
+   		console.log(msg)
+    }
+  });
+}
+ </script>
