@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
   end
 
   def top3
-    @movies = Movie.all
+    @movies = Movie.all.order("flixratingspoints DESC", "imdbranking DESC", "tomatorating DESC")
     @top_sixties = @movies.where("year BETWEEN 1960 AND 1969").limit(3)
     @top_seventies = @movies.where("year BETWEEN 1970 AND 1979").limit(3)
     @top_eighties = @movies.where("year BETWEEN 1980 AND 1989").limit(3)
