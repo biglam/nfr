@@ -13,4 +13,10 @@ class Movie < ActiveRecord::Base
 		# binding.pry;''
 		# self.save
 	end
+
+	def update_points
+		# binding.pry;''
+		self.flixratingspoints = votes.map { |vote| vote.points}.reduce(:+)
+		self.save
+	end
 end

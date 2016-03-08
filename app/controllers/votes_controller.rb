@@ -10,6 +10,7 @@ class VotesController < ApplicationController
 			if Movie.where(id: movie).count != 0
 				current_movie = Movie.find(movie)
 				current_movie.votes.create(user: current_user, points: pointscore[0])
+				current_movie.update_points
 			end
 			pointscore.rotate!
 		end
