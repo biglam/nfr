@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   def index
     if params[:q]
       # binding.pry;''
-      @movies = Movie.where("title like ?", "%#{params[:q]}%")
+      @movies = Movie.where("lower(title) like ?", "%#{params[:q]}%")
     else
       @movies = Movie.all
     end
