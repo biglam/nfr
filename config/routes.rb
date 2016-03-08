@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :movies do
     collection do
       get 'top3'
+      get 'entervotes'
     end
   end
   root 'movies#index'
