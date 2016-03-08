@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+	has_many :votes
 
 	def get_data_from_omdb
 		omdb_details = HTTParty.get("http://www.omdbapi.com/?t=#{self.title}&y=&tomatoes=true&r=json")
