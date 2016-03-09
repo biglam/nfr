@@ -35,20 +35,19 @@ generate vote with correct details
 </script>
 <% choices = ['1st','2nd','3rd'] %>
 <%= form_tag "/votes/multicast", :method => :post, id: "votescast" do %>
-<!-- <form action="/votes/multicast" method="post" id="votescast"> -->
+
 	<% 18.times do |i| %>
 		<%= 1960 + (10*(i/3)) %>'s
 		<%= choices[0] %><%= text_field_tag(:title, "", :id => "movie#{i}") %> <p>Year: <span id="movie<%= i %>year"></span> ID: <span id="movie<%= i %>id"></span></p>
 		<%= hidden_field("movie_id", "#{i}", :value => 1) %>
 		<script>
 			$('#movie<%= i %>').blur(function(e) {
-			// console.log($('#movie1').val());
+
 			search($('#movie<%= i %>').val(), <%= i %>);
 			})
 		</script>
 		<% choices.rotate! %>
 		<% end %>
 	<%= submit_tag %>
-	<!-- <input type="submit"> -->
-	<!-- </form> -->
+
 <% end %>
