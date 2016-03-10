@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       post 'multicast'
     end
   end
-  root 'movies#index'
+  root 'movies#top3'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
