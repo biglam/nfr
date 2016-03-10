@@ -10,7 +10,7 @@ generate vote with correct details
 -->
 
 <script> 
-	function search(query, movienum) {
+	function search(query, movienum, decade) {
 		$.ajax({
 			type: "GET",
 			url: '/movies.json',
@@ -25,6 +25,11 @@ generate vote with correct details
 				$('#movie' + movienum + 'year').text(msg[0]['year']);
 				$('#movie' + movienum + 'id').text(msg[0]['id']);
 				$('#movie_id_' + movienum).val(msg[0]['id']);
+				if ((msg[0]['year'] >= decade) && msg[0]['year'] <= decade+9) {
+					$('#movie' + movienum + 'year').removeClass('error');
+				} else {
+					$('#movie' + movienum + 'year').addClass('error');
+				}
 			}
 		});
 	}
@@ -37,13 +42,12 @@ generate vote with correct details
 <%= form_tag "/votes/multicast", :method => :post, id: "votescast" do %>
 
 	<% 18.times do |i| %>
-		<%= 1960 + (10*(i/3)) %>'s
+		<% decade = 1960 + (10*(i/3)) %><%= decade %>'s
 		<%= choices[0] %><%= text_field_tag(:title, "", :id => "movie#{i}") %> <p>Year: <span id="movie<%= i %>year"></span> ID: <span id="movie<%= i %>id"></span></p>
 		<%= hidden_field("movie_id", "#{i}", :value => 1) %>
 		<script>
 			$('#movie<%= i %>').blur(function(e) {
-
-			search($('#movie<%= i %>').val(), <%= i %>);
+			search($('#movie<%= i %>').val(), <%= i %>, <%= decade %>);
 			})
 		</script>
 		<% choices.rotate! %>
