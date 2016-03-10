@@ -10,6 +10,7 @@ generate vote with correct details
 -->
 
 <script> 
+var errorcount = 0
 	function search(query, movienum, decade) {
 		$.ajax({
 			type: "GET",
@@ -30,6 +31,8 @@ generate vote with correct details
 				} else {
 					$('#movie' + movienum + 'year').addClass('error');
 				}
+				errorcount = $('.error').length;
+				$('#errorcount').text(errorcount);
 			}
 		});
 	}
@@ -52,6 +55,7 @@ generate vote with correct details
 		</script>
 		<% choices.rotate! %>
 		<% end %>
+		<p>Number of errors: <span id="errorcount">0</span> </p>
 	<%= submit_tag %>
 
 <% end %>
