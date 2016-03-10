@@ -37,9 +37,6 @@ var errorcount = 0
 		});
 	}
 
-	$(function() {
-
-	});
 </script>
 <% choices = ['1st','2nd','3rd'] %>
 <%= form_tag "/votes/multicast", :method => :post, id: "votescast" do %>
@@ -56,6 +53,17 @@ var errorcount = 0
 		<% choices.rotate! %>
 		<% end %>
 		<p>Number of errors: <span id="errorcount">0</span> </p>
-	<%= submit_tag %>
-
+	<%= submit_tag "Vote", :id => "castbutton" %>
 <% end %>
+
+<script>
+		$('#castbutton').click(function (e) {
+			if (errorcount == 0) {
+				$('#votescast').submit();
+			} else {
+				e.preventDefault();
+				alert("Please correct " + errorcount + " mistakes. Movies must be from the correct decade.");
+			}
+		})
+
+</script>
