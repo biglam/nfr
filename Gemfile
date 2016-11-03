@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
 group :development do
